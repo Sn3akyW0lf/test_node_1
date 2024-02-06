@@ -2,8 +2,7 @@ const Attendance = require('../models/attendance');
 const Student = require('../models/student');
 
 exports.getIndex = async (req, res, next) => {
-    const curr_date = new Date();
-    const date = curr_date.setHours(0, 0, 0, 0);
+    const date = new Date();
 
     // const students = await req.user.getStudents();
     const attendances = await req.user.getAttendances({
@@ -11,7 +10,7 @@ exports.getIndex = async (req, res, next) => {
             attendance_date: date
         }
     });
-    console.log(curr_date);
+    // console.log(curr_date);
     console.log(attendances);
     if (attendances.length !== 0) {
         res.render('attendance/date-attendance', {
@@ -52,9 +51,9 @@ exports.postAddDate = async (req, res, next) => {
         if (attendances.length !== 0) {
             console.log('Found Something');
             res.render('attendance/date-attendance', {
-                pageTitle: 'Current Day Attendance',
+                pageTitle: 'Recorded Attendance',
                 // studs: students,
-                attends: attendances, 
+                attends: attendances,
                 path: '/result'
             });
         } else {
@@ -73,10 +72,52 @@ exports.postAddDate = async (req, res, next) => {
 };
 
 exports.getReport = async (req, res, next) => {
-    const attendances = await Attendance.findAll();
-    console.log(attendances);
+    // const attendances = await req.user.getAttendances();
+    const students = await req.user.getStudents();
+    let names = [];
+    let total = [];
+    let attended = [];
+    let perc = [];
+
+    for (let i = 0; i < students.length; i++) {
+        names.push(students[i].name);
+    }
+    // console.log('names', names);
+
+    for (let i = 0; i < names.length; i++) {
+        let temp = await req.user.getAttendances({
+            where: {
+                name: names[i]
+            }
+        });
+        total.push(temp.length);
+    }
+    // console.log('total', total);
+
+    for (let i = 0; i < names.length; i++) {
+        let temp = await req.user.getAttendances({
+            where: {
+                name: names[i],
+                attendance: 'present'
+            }
+        });
+        attended.push(temp.length)
+    }
+    // console.log('attended', attended);
+
+    for (let i = 0; i < attended.length; i++) {
+        let temp = (attended[i] * 100) / total[i];
+        let tp = temp.toFixed(2)
+        perc.push(tp);
+    }
+    console.log(perc[1] > 90);
+
     res.render('attendance/report', {
         pageTitle: 'Attendance Report',
+        names: names,
+        total: total,
+        attended: attended,
+        percent: perc,
         path: '/report'
     });
 };
@@ -99,6 +140,12 @@ exports.postAddAttendance = async (req, res, next) => {
         }
         console.log(resultSet);
         console.log('Successfully Logged Attendance');
+        res.render('attendance/date-attendance', {
+            pageTitle: 'Recorded Attendance',
+            // studs: students,
+            attends: resultSet,
+            path: '/result'
+        });
 
     } catch (err) {
         console.log(err);

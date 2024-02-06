@@ -29,7 +29,29 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody id="tblExpense">
+                        <tbody>
+                            <% for (let i = 0; i < names.length; i ++) { %>
+                                <div>
+                                    <tr class="<% if (percent[i] >= 90) { %>
+                                        <%= 'table-info' %> <% } else if (percent[i] >= 75) { %>
+                                            <%= 'table-success' %> <% } else if (percent[i] >= 50) { %>
+                                                <%= 'table-warning' %> <% } else { %>
+                                                    <%= 'table-danger' %> <% } %>">
+                                        <td>
+                                            <%= names[i] %>
+                                        </td>
+                                        <td>
+                                            <%= total[i] %>
+                                        </td>
+                                        <td>
+                                            <%= attended[i] %>
+                                        </td>
+                                        <td>
+                                            <%= percent[i] %>
+                                        </td>
+                                    </tr>
+                                </div>
+                                <% } %>
                         </tbody>
                     </table>
                 </div>
