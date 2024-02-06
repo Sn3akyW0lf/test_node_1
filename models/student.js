@@ -13,6 +13,17 @@ const Student = sequelize.define('student', {
       type: Sequelize.STRING,
       allowNull: false
   },
+  email: {
+    type: Sequelize.STRING
+  },
+  ph_student: {
+    type: Sequelize.STRING(10),
+    allowNull: false
+  },
+  ph_parent: {
+    type: Sequelize.STRING(10),
+    allowNull: false
+  }
 });
 
 module.exports = Student;

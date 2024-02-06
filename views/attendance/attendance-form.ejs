@@ -1,0 +1,52 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+            <%- include('../includes/header.ejs') %>
+    
+    
+               
+            <form id="my-form" action="/commit" class="text-bg-secondary bg-opacity-20 border border-dark border-size-3 rounded-3
+                                    p-5 m-3" method="POST">
+                <div class="card p-3 m-3">
+                    <h2 class="card-header">Attendace For Date -
+                        <%= date.toDateString() %>
+                    </h2>
+                </div>
+                <div>
+                    <table class="table table rounded-6 p-6">
+                        <tbody>
+                            <% for (let student of studs) { %>
+            
+                                <div>
+                                    <tr>
+                                        <td>
+                                            <label class="form-label">
+                                                <%= student.name %>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                <input type="radio" class="btn-check" name="<%= student.name %>" id="<%= student.name %>1" value="present">
+                                                <label class="btn btn-outline-success" for="<%= student.name %>1">Present</label>
+            
+                                                <input type="radio" class="btn-check" name="<%= student.name %>" id="<%= student.name %>2" value="absent">
+                                                <label class="btn btn-outline-danger" for="<%= student.name %>2">Absent</label>
+                                            </div>
+                                        </td>
+                                    </tr>
+            
+            
+                                </div>
+            
+                                <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <input type="hidden" name="date" value="<%= date %>">
+                <input type="submit" value="SAVE" class="btn btn-sm btn-outline-light p-3 m-3" />
+            </form>
+
+            <%- include('../includes/end.ejs'); %>
+            

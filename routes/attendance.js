@@ -8,6 +8,12 @@ const router = express.Router();
 
 router.get('/', attendanceController.getIndex);
 
-router.get('/report/', attendanceController.logAttendance);
+router.get('/date', attendanceController.getAddDate);
+
+router.post('/date', attendanceController.postAddDate);
+
+router.post('/commit', attendanceController.postAddAttendance);
+
+router.get('/report', attendanceController.getReport);
 
 module.exports = router;

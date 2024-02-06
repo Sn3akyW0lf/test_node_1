@@ -1,0 +1,54 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+            <%- include('../includes/header.ejs') %>
+
+                <form id="my-form" action="/add-student" class="text-bg-secondary bg-opacity-20 border border-dark border-size-3 rounded-3 p-5 m-3"
+                    method="POST">
+                    <div>
+                        <div id="msg_student_name"></div>
+                        <label for="student_name" class="form-label">Enter Student's Name</label>
+                        <input type="text" name="student_name" id="student_name" class="form-control text-bg-light form-control-sm" required>
+                    </div>
+                    <div>
+                        <div id="msg_student_email"></div>
+                        <label for="student_email" class="form-label">Enter Student's Email</label>
+                        <input type="text" name="student_email" id="student_email" class="form-control text-bg-light form-control-sm" required>
+                    </div>
+                    <div>
+                        <div id="msg_student_phone"></div>
+                        <label for="student_phone" class="form-label">Enter Student's Contact</label>
+                        <input type="text" name="student_phone" id="student_phone" class="form-control text-bg-light form-control-sm" maxlength="10" required>
+                    </div>
+                    <div>
+                        <div id="msg_student_parent"></div>
+                        <label for="student_parent" class="form-label">Enter Student's Parent Contact</label>
+                        <input type="text" name="student_parent" id="student_parent" class="form-control text-bg-light form-control-sm" maxlength="10" required>
+                    </div>
+                    <input type="submit" value="ADD" class="btn btn-sm btn-outline-light p-3 m-3" />
+                </form>
+
+                <!-- <script>
+
+                    const myForm = document.getElementById('my-form');
+                    const studentName = document.getElementById('student-name');
+                    const studentMsg = document.getElementById('msg_student-name');
+                    myForm.addEventListener('submit', onSubmit);
+
+                    async function onSubmit(e) {
+                        e.preventDefault();
+                        if (studentName.value === '') {
+                            studentMsg.style.color = 'chocolate';
+                            studentMsg.style.background = 'beige';
+                            studentMsg.innerHTML = 'Please Enter Student Name!';
+                            setTimeout(() => studentMsg.remove(), 3000);
+                        } else {
+                            window.location.href ='/add-student';
+                        }
+                    }
+                    
+                </script> -->
+
+                <%- include('../includes/end.ejs'); %>

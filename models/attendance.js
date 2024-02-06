@@ -10,11 +10,14 @@ const Attendance = sequelize.define('attendance', {
     primaryKey: true
   },
   attendance_date: {
-      type: Sequelize.DATE,
-      allowNull: false
+    type: Sequelize.DATEONLY,
+    allowNull: false
   },
   attendance: {
-      type: Sequelize.BOOLEAN
+    type: Sequelize.STRING
+  },
+  name: {
+    type: Sequelize.STRING
   }
 });
 

@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="/" class="navbar-brand">Attendance Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a href="/" class="nav-link <%= path === '/' ? 'active' : '' %>">Today</a>
+            </li>
+            <li class="nav-item">
+                <a href="/date" class="nav-link <%= path === '/date' ? 'active' : '' %>">Custom</a>
+            </li>
+            <li class="nav-item">
+                <a href="/report" class="nav-link <%= path === '/report' ? 'active' : '' %>">Report</a>
+            </li>
+            <li class="nav-item">
+                <a href="/add-student" class="nav-link <%= path === '/add-student' ? 'active' : '' %>">Add Student</a>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,32 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+            <%- include('../includes/header.ejs') %>
+                <!-- <a href="../views/attendance/report.html" class="btn btn-sm btn-primary p-3 m-3">Fetch Attendance Data</a> -->
+                <div class="container text-bg-secondary rounded-2 p-2">
+                    <center>
+                        <h2 class="title">Attendance Log</h2>
+                    </center>
+                    <table class="table table rounded-2 p-2">
+                        <thead>
+                            <tr>
+                                <th class="d-none">
+                                    id
+                                </th>
+                                <th>
+                                    Student Name
+                                </th>
+                                <th>
+                                    Present / Absent
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblExpense" class="table-group-divider">
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+                <%- include('../includes/end.ejs'); %>

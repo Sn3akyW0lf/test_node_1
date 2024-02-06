@@ -1,0 +1,38 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+            <%- include('../includes/header.ejs') %>
+
+                <form id="my-form" action="/date" class="text-bg-secondary bg-opacity-20 border border-dark border-size-3 rounded-3 p-5 m-3" method="POST">
+                    <div>
+                        <div id="msg_attend_date"></div>
+                        <label for="attend_date" class="form-label">Select a Date</label>
+                        <input type="date" name="attend_date" id="attend_date" class="form-control text-bg-light form-control-sm" required>
+                    </div>
+                    <input type="submit" value="SEARCH" class="btn btn-sm btn-outline-light p-3 m-3" />
+                </form>
+    
+
+                <!-- <script>
+
+                        const myForm = document.getElementById('my-form');
+                        const attendDate = document.getElementById('attend-date');
+                        const attendDateMsg = document.getElementById('msg_attend-date');
+                        myForm.addEventListener('submit', onSubmit);
+    
+                        async function onSubmit(e) {
+                            e.preventDefault();
+                            console.log(attendDate.value);
+                            if (attendDate.value === '') {
+                                attendDateMsg.style.color = 'chocolate';
+                                attendDateMsg.style.background = 'beige';
+                                attendDateMsg.innerHTML = 'Please Select a Date!';
+                                setTimeout(() => attendDateMsg.remove(), 3000);
+                            }
+                        }
+                        
+                    </script> -->
+
+                <%- include('../includes/end.ejs'); %>
